@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\Auth\AuthController;
 use App\Http\Controllers\admin\project\ProjectController;
+use App\Http\Controllers\admin\testimonials\TestimonialController;
 
 Route::get('admin/login', [AuthController::class, 'showLogin'])->name('admin.showlogin');
 Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login');
