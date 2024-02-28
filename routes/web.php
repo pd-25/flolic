@@ -27,6 +27,7 @@ Route::get('/our-project', [IndexController::class, 'our_project'])->name('our-p
 Route::get('/single-project/{slug}', [IndexController::class, 'single_project'])->name('single_project');
 Route::get('/testimonials', [IndexController::class, 'testimonials'])->name('testimonials');
 Route::get('/contact-us', [IndexController::class, 'contact'])->name('contact-us');
+Route::post('/contact-us', [IndexController::class, 'contactPost'])->name('contactPost');
 
 //service
 Route::get('/electrical-design', [IndexController::class, 'electrical_design'])->name('electrical-design');

@@ -83,31 +83,31 @@
                             <div id="navbarNav" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a href="/" class="nav-link">Home</a>
+                                        <a href="{{ route('home') }}" class="nav-link">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="ceo-desk" class="nav-link">CEO Desk</a>
+                                        <a href="{{ route('ceo-desk') }}" class="nav-link">CEO Desk</a>
                                     </li>
                                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
                                             href="#">Services</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="electrical-design">Electrical design</a></li>
-                                            <li><a href="hvac-design">HVAC design</a></li>
-                                            <li><a href="phe-design">PHE design</a></li>
-                                            <li><a href="fire-system-design">Fire system design</a></li>
-                                            <li><a href="elv-network-design">ELV network design</a></li>
-                                            <li><a href="cctv-and-security-system-design">CCTV and security system
+                                            <li><a href="{{ route('electrical-design') }}">Electrical design</a></li>
+                                            <li><a href="{{ route('hvac-design') }}">HVAC design</a></li>
+                                            <li><a href="{{ route('phe-design') }}">PHE design</a></li>
+                                            <li><a href="{{ route('fire-system-design') }}">Fire system design</a></li>
+                                            <li><a href="{{ route('elv-network-design') }}">ELV network design</a></li>
+                                            <li><a href="{{ route('cctv-and-security-system-design') }}">CCTV and security system
                                                     design</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="our-project" class="nav-link">Our Project</a>
+                                        <a href="{{ route('our-project') }}" class="nav-link">Our Project</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="testimonials" class="nav-link">Testimonials</a>
+                                        <a href="{{ route('testimonials') }}" class="nav-link">Testimonials</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="contact-us" class="nav-link">Contact Us</a>
+                                        <a href="{{ route('contact-us') }}" class="nav-link">Contact Us</a>
                                     </li>
 
                                 </ul>
