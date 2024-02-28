@@ -31,7 +31,6 @@
                                 <label for="setting-input-3" class="form-label">Image</label>
                                 <div class="mb-3 image-field">
                                     <input type="file" name="image" class="form-control" required>
-                                    <button type="button" class="btn btn-danger btn-sm remove-image mt-2">Remove</button>
                                 </div>
                             </div>
                             
