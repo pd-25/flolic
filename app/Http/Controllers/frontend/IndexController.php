@@ -87,7 +87,7 @@ class IndexController extends Controller
 
         $data = $request->only('form_name', 'form_email', 'form_phone', 'form_message');
         try {
-            Mail::to($data['form_email'])->send(new ContactUsMail($data));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactUsMail($data));
             return back()->with('msg', 'Thanks for your time..');
         } catch (\Throwable $th) {
             Log::debug('mailerror', [$th->getMessage()]);

@@ -12,9 +12,9 @@
                     <div class="carousel-caption inn-cus-cap">
                         <h1>{{ $project->name }}</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            <li><a href="{{ route('home') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
                                     Home</a></li>
-                            <li><a href="our-project.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Our
+                            <li><a href="{{ route('our-project') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Our
                                     Project</a></li>
                             <li>{{ $project->name }}</li>
                         </ul>
@@ -31,71 +31,43 @@
 
     <section id="welcome-section">
         <div class="container">
-            <div class="row portfolio-item">
-                @foreach ($project->project_images as $imageP)
-                    {{-- @dd($imageP->image) --}}
-                    <div class="item category1 col-lg-4 col-md-4 col-sm mb-4">
-                        @if (isset($imageP) && !empty($imageP->image) && File::exists(public_path('storage/ProjectImages/' . $imageP->image)))
-                            <a href="{{ asset('storage/ProjectImages/' . $imageP->image) }}" class="fancylight popup-btn"
-                                data-fancybox-group="light">
+        <div class="row portfolio-item">
+    @foreach ($project->project_images as $imageP)
+        <div class="item category1 col-lg-4 col-md-4 col-sm mb-4">
+            @if (isset($imageP) && !empty($imageP->image) && File::exists(public_path('storage/ProjectImages/' . $imageP->image)))
+                <a href="{{ asset('storage/ProjectImages/' . $imageP->image) }}" class="fancylight popup-btn"
+                    data-fancybox="{{ $project->id }}" data-caption="{{ $project->name }}">
+                    <img class="img-fluid" src="{{ asset('storage/ProjectImages/' . $imageP->image) }}" alt="">
+                </a>
+            @else
+                <a href="images/gallery/gal-pic1.jpg" class="fancylight popup-btn"
+                    data-fancybox="{{ $project->id }}" data-caption="{{ $project->name }}">
+                    <img class="img-fluid" src="images/gallery/gal-pic1.jpg" alt="">
+                </a>
+            @endif
+        </div>
+    @endforeach
+</div>
 
-                                <img class="img-fluid" src="{{ asset('storage/ProjectImages/' . $imageP->image) }}"
-                                    alt="">
-                            </a>
-                        @else
-                            <a href="images/gallery/gal-pic1.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-
-                                <img class="img-fluid" src="images/gallery/gal-pic1.jpg" alt="">
-                            </a>
-                        @endif
-                    </div>
-                @endforeach
-
-                {{-- <div class="item category2 col-lg-4 col-md-4 col-sm mb-4">
-                    <a href="images/gallery/gal-pic2.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                        <img class="img-fluid" src="images/gallery/gal-pic2.jpg" alt="">
-                    </a>
-                </div>
-                <div class="item category3 col-lg-4 col-md-4 col-sm mb-4">
-                    <a href="images/gallery/gal-pic3.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                        <img class="img-fluid" src="images/gallery/gal-pic3.jpg" alt="">
-                    </a>
-                </div>
-                <div class="item category4 col-lg-4 col-md-4 col-sm mb-4">
-                    <a href="images/gallery/gal-pic4.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                        <img class="img-fluid" src="images/gallery/gal-pic4.jpg" alt="">
-                    </a>
-                </div> --}}
-
-            </div>
         </div>
     </section>
 @endsection
-@section('script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
-    <script>
-        (function() {
-            var $gallery = new SimpleLightbox('.gallery a', '.gallery a p', {});
-        })();
-
-        $('.portfolio-menu ul li').click(function() {
-            $('.portfolio-menu ul li').removeClass('active');
-            $(this).addClass('active');
-
-            var selector = $(this).attr('data-filter');
-            $('.portfolio-item').isotope({
-                filter: selector
-            });
-            return false;
-        });
+@push('scripts')
+      <script>
         $(document).ready(function() {
-            var popup_btn = $('.popup-btn');
-            popup_btn.magnificPopup({
-                type: 'image',
-                gallery: {
-                    enabled: true
-                }
+            $(".fancylight").fancybox({
+                loop: true,
+                buttons: [
+                    'slideShow',
+                    'fullScreen',
+                    'thumbs',
+                    'close'
+                ]
             });
         });
     </script>
-@endsection
+@endpush

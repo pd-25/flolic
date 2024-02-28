@@ -10,7 +10,7 @@
             <div class="carousel-caption inn-cus-cap">
 			  <h1>CEO Desk</h1>
 		 <ul class="breadcrumb">
-  <li><a href="index.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home</a></li>
+  <li><a href="{{ route('home') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home</a></li>
   <li>CEO Desk</li>
 </ul> 
             </div>

@@ -88,7 +88,7 @@
                         <li>Nullam consectetur porttitor leo, a luctus sapien porttitor vitae.</li>
                     </ul>
 
-                    <p><a href="ceo-desk.html" class="hm-btn">Read More</a></p>
+                    <p><a href="ceo-desk" class="hm-btn">Read More</a></p>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
                                 <div class="pro-box">
                                     <p>Electrical designing is a significant aspect of creating safe, efficient, and
                                         functional electrical systems...</p>
-                                    <a href="electrical-design.html" class="hm-btn">Read More</a>
+                                    <a href="electrical-design" class="hm-btn">Read More</a>
                                 </div>
                             </div>
 
@@ -136,7 +136,7 @@
                                 <div class="pro-box">
                                     <p>HVAC (Heating, Ventilation, and Air Conditioning) design is an important aspect of
                                         creating indoor environments...</p>
-                                    <a href="hvac-design.html" class="hm-btn">Read More</a>
+                                    <a href="hvac-design" class="hm-btn">Read More</a>
                                 </div>
                             </div>
 
@@ -151,7 +151,7 @@
                                 <div class="pro-box">
                                     <p>PHE (Public Health Engineering) design is a specialized field focused on planning and
                                         implementing water supply...</p>
-                                    <a href="phe-design.html" class="hm-btn">Read More</a>
+                                    <a href="phe-design" class="hm-btn">Read More</a>
                                 </div>
                             </div>
 
@@ -166,7 +166,7 @@
                                 <div class="pro-box">
                                     <p>Fire system designing is a critical aspect of ensuring the safety of buildings and
                                         occupants by implementing...</p>
-                                    <a href="fire-system-design.html" class="hm-btn">Read More</a>
+                                    <a href="fire-system-design" class="hm-btn">Read More</a>
                                 </div>
                             </div>
 
@@ -181,7 +181,7 @@
                                 <div class="pro-box">
                                     <p>ELV (Extra Low Voltage) network design is a specialized field in the realm of
                                         electrical engineering that focuses...</p>
-                                    <a href="elv-network-design.html" class="hm-btn">Read More</a>
+                                    <a href="elv-network-design" class="hm-btn">Read More</a>
                                 </div>
                             </div>
 
@@ -196,7 +196,7 @@
                                 <div class="pro-box">
                                     <p>CCTV (Closed-Circuit Television) and security system designing is a specialized field
                                         focused on creating comprehensive...</p>
-                                    <a href="cctv-and-secuirity-system-design.html" class="hm-btn">Read More</a>
+                                    <a href="cctv-and-secuirity-system-design" class="hm-btn">Read More</a>
                                 </div>
                             </div>
 
@@ -287,7 +287,7 @@
                         <div class="media-body">
                             <h2 class="mt-0">Lorem ipsum dolor sit ametetur adipisicing elit.</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sunt.</p>
-                            <a href="contact-us.html" class="banner-btn">Contact Us Now!</a>
+                            <a href="contact-us" class="banner-btn">Contact Us Now!</a>
                         </div>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                                         @else
                                             <img src="{{ asset('frontend/images/gal-pic333.jpg') }}" class="img-fluid">
                                         @endif
-                                        <h3>$project->name</h3>
+                                        <h3>{{ $project->name }}</h3>
                                     </div>
                                 </div>
                             @endforeach
@@ -506,25 +506,37 @@
             <div class="row box-shadow">
                 <div class="col-lg-5 px-0 contact-form-bg">
                     <h3>Contact Us</h3>
-                    <form role="form" action="" method="post" id="hm-contact-form">
+                    @if (Session::has('msg'))
+                    <p class="alert alert-info">{{ Session::get('msg') }}</p>
+                @endif
+                    <form role="form" action="{{ route('contactPost') }}" method="post" id="hm-contact-form">
                         <div class="controls">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <input type="text" required="required" placeholder="Full name"
                                             class="form-control" name="form_name" id="form_name">
+                                            @if ($errors->has('form_name'))
+                                            <span class="text-danger">{{ $errors->first('form_name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <input type="email" required="required" placeholder="Email"
                                             class="form-control" name="form_email" id="form_email">
+                                            @if ($errors->has('form_email'))
+                                            <span class="text-danger">{{ $errors->first('form_email') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <input type="tel" required="required" placeholder="Phone no"
                                             class="form-control" name="form_phone" id="form_phone">
+                                            @if ($errors->has('form_phone'))
+                                            <span class="text-danger">{{ $errors->first('form_phone') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -533,10 +545,13 @@
                                     <div class="form-group">
                                         <textarea data-error="Please,leave us a message." required="required" rows="4" placeholder="Message for me"
                                             class="form-control" name="form_message" id="form_message"></textarea>
+                                            @if ($errors->has('form_message'))
+                                            <span class="text-danger">{{ $errors->first('form_message') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" value="Submit Now" class="hm-btn">
+                                    <button type="submit" class="hm-btn">Submit Now</button>
                                 </div>
                             </div>
                         </div>

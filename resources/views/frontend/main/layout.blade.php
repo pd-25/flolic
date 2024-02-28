@@ -35,6 +35,7 @@
     <link href="{{ asset('frontend/addons/jquery.smartmenus.bootstrap-4.css') }}" rel="stylesheet">
     <!-- GRT Youtube Plugin CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/grt-youtube-popup.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     
 </head>
 

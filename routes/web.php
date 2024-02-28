@@ -18,6 +18,22 @@ use App\Http\Controllers\frontend\IndexController;
 //     return view('welcome');
 // });
 
+Route::get('optimize', function () {
+
+    \Artisan::call('optimize:clear');
+
+    dd("optimize is cleared");
+
+});
+
+Route::get('storage', function () {
+
+    \Artisan::call('storage:link');
+
+    dd("storage is link");
+
+});
+
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
