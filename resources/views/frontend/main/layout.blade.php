@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,7 +34,9 @@
     <link href="{{ asset('frontend/addons/jquery.smartmenus.bootstrap-4.css') }}" rel="stylesheet">
     <!-- GRT Youtube Plugin CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/grt-youtube-popup.css') }}">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include FancyBox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
 </head>
 
 <body>
@@ -199,6 +200,7 @@
     </script>
     <script src="{{ asset('frontend/owl-carousel/js/owl.carousel.js') }}"></script>
     <script src="{{ asset('frontend/dist/simple-lightbox.js?v2.2.1') }}"></script>
+   
     <!-- End Owl pranab-->
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script> --}}
@@ -298,4 +300,13 @@
     @yield('script')
 </body>
 
+.on('click', function() {
+                owl.trigger('play.owl.autoplay', [2000])
+              })
+              $('.stop').on('click', function() {
+                owl.trigger('stop.owl.autoplay')
+              })
+            })
+          </script>			  
+</body>  
 </html>
