@@ -36,7 +36,15 @@
                                 <td>{{ $item->title }}</td>
                                 <td class="stat-cell">{{ $item->position }}</td>
                                 <td class="stat-cell">{{ $item->text }}</td>
-                                <td class="stat-cell">{{ $item->image }}</td>
+                                <td class="stat-cell">
+                                    @if (isset($item) && !empty($item->image) && File::exists(public_path('storage/TestiImage/' . $item->image)))
+                                        <img height="103" width="127"
+                                            src="{{ asset('storage/TestiImage/' . $item->image) }}" alt="">
+                                        
+                                    @else
+                                        <img src="{{ asset('User/assets/img/the-japanese-bridge-claude-monet.jpg') }}">
+                                    @endif
+                                </td>
                                 <td class="stat-cell">
                                     <a href="{{ route('testimonials.edit', $item->slug) }}"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
