@@ -24,6 +24,7 @@ Auth::routes();
 Route::get('/', [IndexController::class, 'index'])->name('home');
 Route::get('/ceo-desk', [IndexController::class, 'ceo_desk'])->name('ceo-desk');
 Route::get('/our-project', [IndexController::class, 'our_project'])->name('our-project');
+Route::get('/single-project/{slug}', [IndexController::class, 'single_project'])->name('single_project');
 Route::get('/testimonials', [IndexController::class, 'testimonials'])->name('testimonials');
 Route::get('/contact-us', [IndexController::class, 'contact'])->name('contact-us');
 

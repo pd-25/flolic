@@ -1,5 +1,11 @@
 @extends('admin.main.layout')
 @section('content')
+<style>
+    .action-icons {
+    display: block;
+    gap: 10px; /* Adjust the gap between the icons as needed */
+}
+</style>
     <div class="app-card app-card-stats-table h-100 shadow-sm">
         <div class="app-card-header p-3">
             <div class="row justify-content-between align-items-center">
@@ -9,14 +15,12 @@
                         <p class="alert alert-info">{{ Session::get('msg') }}</p>
                     @endif
                 </div>
-                <div class="float-end">
+                <div class="col-auto float-end">
                     <a href="{{ route('testimonials.create') }}" class="btn btn-sm btn-success">Add Testimonials</a>
                 </div>
-
-
             </div>
-
         </div>
+        
 
         <div class="app-card-body p-3 p-lg-4">
             <div class="table-responsive">
@@ -25,37 +29,36 @@
                         <tr>
                             <th class="meta"> Title</th>
                             <th class="meta"> Designation</th>
-                            <th class="meta stat-cell">Text</th>
-                            <th class="meta stat-cell">Image</th>
-                            <th class="meta stat-cell">Action</th>
+                            <th class="meta ">Text</th>
+                            <th class="meta ">Image</th>
+                            <th class="meta ">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($testimonials as $item)
                             <tr>
                                 <td>{{ $item->title }}</td>
-                                <td class="stat-cell">{{ $item->position }}</td>
-                                <td class="stat-cell">{{ $item->text }}</td>
-                                <td class="stat-cell">
+                                <td class="">{{ $item->position }}</td>
+                                <td class="">{{ $item->text }}</td>
+                                <td class="">
                                     @if (isset($item) && !empty($item->image) && File::exists(public_path('storage/TestiImage/' . $item->image)))
                                         <img height="103" width="127"
                                             src="{{ asset('storage/TestiImage/' . $item->image) }}" alt="">
-                                        
                                     @else
                                         <img src="{{ asset('User/assets/img/the-japanese-bridge-claude-monet.jpg') }}">
                                     @endif
                                 </td>
-                                <td class="stat-cell">
-                                    <a href="{{ route('testimonials.edit', $item->slug) }}"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                            <path
-                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                            <path fill-rule="evenodd"
-                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
-                                        </svg></a>
+                                <td class="action-icons">
+                                    <a href="{{ route('testimonials.edit', $item->slug) }}" class="m-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                        </svg>
+                                    </a>
+                                    
+
                                     <form method="POST" action="{{ route('testimonials.destroy', $item->slug) }}"
-                                        class="action-icon">
+                                        class="action-icon delete-form">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
                                         <button type="submit"

@@ -1,5 +1,11 @@
 @extends('admin.main.layout')
 @section('content')
+<style>
+    .action-icons {
+    display: block;
+    gap: 10px; /* Adjust the gap between the icons as needed */
+}
+</style>
     <div class="app-card app-card-stats-table h-100 shadow-sm">
         <div class="app-card-header p-3">
             <div class="row justify-content-between align-items-center">
@@ -9,7 +15,7 @@
                         <p class="alert alert-info">{{ Session::get('msg') }}</p>
                     @endif
                 </div>
-                <div class="float-end">
+                <div class="col-auto float-end">
                     <a href="{{ route('projects.create') }}" class="btn btn-sm btn-success">Add project</a>
                 </div>
 
@@ -24,17 +30,17 @@
                     <thead>
                         <tr>
                             <th class="meta">Project Title</th>
-                            <th class="meta stat-cell">Created at</th>
-                            <th class="meta stat-cell">Action</th>
+                            <th class="meta ">Created at</th>
+                            <th class="meta ">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($projects as $item)
                             <tr>
                                 <td>{{ $item->name }}</td>
-                                <td class="stat-cell">{{ $item->created_at }}</td>
-                                <td class="stat-cell">
-                                    <a href="{{ route('projects.edit', $item->slug) }}"><svg
+                                <td class="">{{ $item->created_at->format('M d, Y h:i A') }}</td>
+                                <td class="action-icons">
+                                    <a href="{{ route('projects.edit', $item->slug) }}" class="m-3"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path
