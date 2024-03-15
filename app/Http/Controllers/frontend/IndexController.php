@@ -17,17 +17,8 @@ class IndexController extends Controller
     public function index (){
         return view("frontend.home.home");
     }
-    public function ceo_desk (){
-        return view("frontend.ceo.ceo");
-    }
-    public function our_project (){
-        $data['projects'] = $this->projectInterface->getAllProjects();
-        return view("frontend.project.project", $data);
-    }
-
-    public function single_project($slug){
-        $data['project'] = $this->projectInterface->getSingleProject($slug);
-        return view('frontend.project.single-project', $data);
+    public function gallery (){
+        return view("frontend.gallery.gallery");
     }
     public function testimonials (){
         $data['testimonials'] = Testimonials::get();
@@ -36,25 +27,16 @@ class IndexController extends Controller
     public function contact (){
         return view("frontend.contact.contact");
     }
+    public function about (){
+        return view("frontend.about.about");
+    }
 
     // service
 
-    public function electrical_design (){
-        return view("frontend.service.electrical.electrical");
+    public function services(){
+        return view("frontend.service.service");
     }
-    public function hvac_design (){
-        return view("frontend.service.hvac.hvac");
-    }
-    public function phe_design (){
-        return view("frontend.service.phe.phe");
-    }
-    public function fire_system_design (){
-        return view("frontend.service.fire.fire");
-    }
-    public function elv_network_design(){
-        return view("frontend.service.elv.elv");
-    }
-    public function cctv_and_security_system_design(){
-        return view("frontend.service.cctv.cctv");
+    public function services_details(){
+        return view("frontend.service.servicedetails");
     }
 }

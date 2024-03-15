@@ -22,19 +22,15 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [IndexController::class, 'index'])->name('home');
-Route::get('/ceo-desk', [IndexController::class, 'ceo_desk'])->name('ceo-desk');
-Route::get('/our-project', [IndexController::class, 'our_project'])->name('our-project');
-Route::get('/single-project/{slug}', [IndexController::class, 'single_project'])->name('single_project');
+Route::get('/gallery', [IndexController::class, 'gallery'])->name('gallery');
 Route::get('/testimonials', [IndexController::class, 'testimonials'])->name('testimonials');
-Route::get('/contact-us', [IndexController::class, 'contact'])->name('contact-us');
-
+Route::get('/contact', [IndexController::class, 'contact'])->name('contact-us');
+Route::get('/about', [IndexController::class, 'about'])->name('about-us');
 //service
-Route::get('/electrical-design', [IndexController::class, 'electrical_design'])->name('electrical-design');
-Route::get('/hvac-design', [IndexController::class, 'hvac_design'])->name('hvac-design');
-Route::get('/phe-design', [IndexController::class, 'phe_design'])->name('phe-design');
-Route::get('/fire-system-design', [IndexController::class, 'fire_system_design'])->name('fire-system-design');
-Route::get('/elv-network-design', [IndexController::class, 'elv_network_design'])->name('elv-network-design');
-Route::get('/cctv-and-security-system-design', [IndexController::class, 'cctv_and_security_system_design'])->name('cctv-and-security-system-design');
+Route::get('/services', [IndexController::class, 'services'])->name('services');
+Route::get('/services-details', [IndexController::class, 'services_details'])->name('services-details');
+
+
 
 
 

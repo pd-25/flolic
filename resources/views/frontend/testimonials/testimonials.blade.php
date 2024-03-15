@@ -1,104 +1,195 @@
 @extends('frontend.main.layout')
 @section('content')
-    <section id="inn-banner-slider" class="banner-slider">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active"
-                    style="background-image: url('{{ asset('frontend/images/inn-banner.jpg') }}');">
-                    <canvas id="canvas"></canvas>
-                    <div class="carousel-caption inn-cus-cap">
-                        <h1>Testimonials</h1>
-                        <ul class="breadcrumb">
-                            <li><a href="index.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home</a>
-                            </li>
-                            <li>Testimonials</li>
-                        </ul>
-                    </div>
-                </div>
-
-
+<div class="inner-banner">
+         <div class="banner-caption">
+            <h1 data-aos="fade-up" data-aos-duration="1000">What Our Customers Are Saying</h1>
+         </div>
+         <img src="{{asset('frontend/images/about-banner.jpg')}}">
+      </div>
+      <div class="container testimonials-wrap">
+         <div class="row">
+            <div class="col-md-6">
+               <img src="{{asset('frontend/images/testimonail.jpg')}}" data-aos="fade-left" data-aos-duration="2000">
             </div>
-
-        </div>
-    </section>
-    <!-- Page Content -->
-
-
-    <section id="welcome-section">
-        <div class="container">
-            <div class="row text-center mb-3">
-                <div class="col-lg-12">
-                    <h1 class="mb-0">Testimonial</h1>
-                    <hr>
-                    <p>Aenean est mi, scelerisque nec porttitor sit amet, sagittis sed tellus. Ut sem turpis, dignissim id
-                        eros vel, rutrum rutrum libero. Donec non orci et ipsum porta cursus ornare sit amet libero. Donec
-                        venenatis consectetur fringilla uisque ac dolor sapien.</p>
-                    <hr>
-                </div>
+            <div class="col-md-6">
+               <div class="testimonials-intro" data-aos="fade-right" data-aos-duration="3000">
+                  <h3>help Us Improve our Productivity</h3>
+                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+               </div>
             </div>
-            <div class="row">
-                @foreach ($testimonials as $item)
-                    <div class="col-lg-12 mb-2">
-                        <div class="tstimonial-box">
-                            <div class="media ts-ctn testimonials-thumb">
-                                <div class="media-body">
-                                    <img src="{{ asset('frontend/images/comma.png') }}" class="mb-2">
-                                    <p>“{{ $item->text }}”</p>
-                                    <div class="media">
-                                        @if (isset($item) && !empty($item->image) && File::exists(public_path('storage/TestiImage/' . $item->image)))
-                                            <img src="{{ asset('storage/TestiImage/' . $item->image) }}" class="mr-3" alt="" height="100px" width="100px">
-                                        @else
-                                            <img src="{{ asset('frontend/images/ts-pic2.jpg') }}" class="mr-3"
-                                                alt="...">
-                                        @endif
-
-                                        <div class="media-body align-self-center">
-                                            <h4 class="mt-0">{{ $item->title }}</h4>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <p>{{ $item->position }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+         </div>
+      </div>
+      <div class="container inner-testimonials-box">
+         <div class="row">
+            <div class="col-md-4">
+               <div class="feedback" data-aos="fade-up" data-aos-duration="1000">
+                  <img src="{{asset('frontend/images/comma.png')}}" class="comma">
+                  <p>
+                     Curabitur velit arcu, pellenteue quis varius at, porta eget ex. Nulla phtra semper tortor, ornare tincidunt est fcibus at. Pellentesque arcu justo, finibus non volutpat a, maximus ut tellus. Duisis nec libero ultricies tincidunt ut a risus fusce ut convallis lectus. 
+                  </p>
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="feedback-profile">
+                           <img src="{{asset('frontend/images/profile.jpg')}}">
                         </div>
-                    </div>
-                @endforeach
-                {{-- <div class="col-lg-12 mb-2">
-                    <div class="tstimonial-box">
-                        <div class="media ts-ctn testimonials-thumb">
-                            <div class="media-body">
-                                <img src="{{ asset('frontend/images/comma.png') }}" class="mb-2">
-                                <p>“ FROLIC SERVICES did the Electrical and HVAC plans for my ALIPORE CENTRAL JAIL
-                                    renovation project in Kolkata, West Bengal. I sought them out for their unique position
-                                    to offer specialized design using unconventional, environmentally friendly MEP
-                                    techniques . I am very grateful for their expertise in this area, allowing me to move
-                                    forward with this project, which is a class 1 Heritage site. </p>
-                                <p>They were very accommodating and patient communicating with me back and forth by phone
-                                    and email. Wish a gook luck for their future assignments.”</p>
-                                <div class="media">
-                                    <img src="{{ asset('frontend/images/ts-pic1.jpg') }}" class="mr-3" alt="...">
-                                    <div class="media-body align-self-center">
-                                        <h4 class="mt-0">Partho Das and Associates</h4>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <p>Alipore Central Jail</p>
-                                    </div>
-                                </div>
-                            </div>
+                     </div>
+                     <div class="col-md-8">
+                        <div class="profile-details">
+                           <strong>Ankita Gupta</strong>
+                           <ul>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                           </ul>
+                           <small>Solo Traveler</small>
                         </div>
-                    </div>
-                </div> --}}
-
-
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </section>
+            <div class="col-md-4">
+               <div class="feedback" data-aos="fade-up" data-aos-duration="2000">
+                  <img src="{{asset('frontend/images/comma.png')}}" class="comma">
+                  <p>
+                     Curabitur velit arcu, pellenteue quis varius at, porta eget ex. Nulla phtra semper tortor, ornare tincidunt est fcibus at. Pellentesque arcu justo, finibus non volutpat a, maximus ut tellus. Duisis nec libero ultricies tincidunt ut a risus fusce ut convallis lectus. 
+                  </p>
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="feedback-profile">
+                           <img src="{{asset('frontend/images/profile.jpg')}}">
+                        </div>
+                     </div>
+                     <div class="col-md-8">
+                        <div class="profile-details">
+                           <strong>Ankita Gupta</strong>
+                           <ul>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                           </ul>
+                           <small>Solo Traveler</small>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="feedback" data-aos="fade-up" data-aos-duration="3000">
+                  <img src="{{asset('frontend/images/comma.png')}}" class="comma">
+                  <p>
+                     Curabitur velit arcu, pellenteue quis varius at, porta eget ex. Nulla phtra semper tortor, ornare tincidunt est fcibus at. Pellentesque arcu justo, finibus non volutpat a, maximus ut tellus. Duisis nec libero ultricies tincidunt ut a risus fusce ut convallis lectus. 
+                  </p>
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="feedback-profile">
+                           <img src="{{asset('frontend/images/profile.jpg')}}">
+                        </div>
+                     </div>
+                     <div class="col-md-8">
+                        <div class="profile-details">
+                           <strong>Ankita Gupta</strong>
+                           <ul>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                           </ul>
+                           <small>Solo Traveler</small>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="feedback" data-aos="fade-up" data-aos-duration="3000">
+                  <img src="{{asset('frontend/images/comma.png')}}" class="comma">
+                  <p>
+                     Curabitur velit arcu, pellenteue quis varius at, porta eget ex. Nulla phtra semper tortor, ornare tincidunt est fcibus at. Pellentesque arcu justo, finibus non volutpat a, maximus ut tellus. Duisis nec libero ultricies tincidunt ut a risus fusce ut convallis lectus. 
+                  </p>
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="feedback-profile">
+                           <img src="{{asset('frontend/images/profile.jpg')}}">
+                        </div>
+                     </div>
+                     <div class="col-md-8">
+                        <div class="profile-details">
+                           <strong>Ankita Gupta</strong>
+                           <ul>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                           </ul>
+                           <small>Solo Traveler</small>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="feedback" data-aos="fade-up" data-aos-duration="2000">
+                  <img src="{{asset('frontend/images/comma.png')}}" class="comma">
+                  <p>
+                     Curabitur velit arcu, pellenteue quis varius at, porta eget ex. Nulla phtra semper tortor, ornare tincidunt est fcibus at. Pellentesque arcu justo, finibus non volutpat a, maximus ut tellus. Duisis nec libero ultricies tincidunt ut a risus fusce ut convallis lectus. 
+                  </p>
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="feedback-profile">
+                           <img src="{{asset('frontend/images/profile.jpg')}}">
+                        </div>
+                     </div>
+                     <div class="col-md-8">
+                        <div class="profile-details">
+                           <strong>Ankita Gupta</strong>
+                           <ul>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                           </ul>
+                           <small>Solo Traveler</small>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="feedback" data-aos="fade-up" data-aos-duration="1000">
+                  <img src="{{asset('frontend/images/comma.png')}}" class="comma">
+                  <p>
+                     Curabitur velit arcu, pellenteue quis varius at, porta eget ex. Nulla phtra semper tortor, ornare tincidunt est fcibus at. Pellentesque arcu justo, finibus non volutpat a, maximus ut tellus. Duisis nec libero ultricies tincidunt ut a risus fusce ut convallis lectus. 
+                  </p>
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="feedback-profile">
+                           <img src="{{asset('frontend/images/profile.jpg')}}">
+                        </div>
+                     </div>
+                     <div class="col-md-8">
+                        <div class="profile-details">
+                           <strong>Ankita Gupta</strong>
+                           <ul>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                              <li><i class="fa-solid fa-star"></i></li>
+                           </ul>
+                           <small>Solo Traveler</small>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 @endsection
